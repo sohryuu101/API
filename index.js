@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
 const PORT = 8080;
-const { taskList } = require('./defaultTasks');
-const { userList } = require('./defaultUsers');
-const generateRandomToken = require('./token');
-const { emailExists, checkUserCredentials } = require('./checkEmailPass');
+const { taskList } = require('./src/defaultTasks');
+const { userList } = require('./src/defaultUsers');
+const generateRandomToken = require('./src/token');
+const { emailExists, checkUserCredentials } = require('./src/checkEmailPass');
 
 app.use(express.json())
 
 app.listen(
-    PORT, 
+    process.env.PORT || PORT, 
     () => console.log(`Server is running on http://localhost:${PORT}`)); 
 
 app.get('/', (req, res) => {
